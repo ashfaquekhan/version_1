@@ -46,6 +46,18 @@ led.draw_text2(0, 0, heading, 1)
 led.draw_text2(12, 15, note, 1)
 led.display()
 
+def menu_pos(pos,opr,lim):
+    x=pos
+    if opr =='d':
+        x=x+1
+    if x>lim and opr == 'd':
+        x=0
+    if opr == 'u':
+        x=x-1
+    if opr == 'u' and x<0:
+        x=lim
+    return x
+
 def copydir(src, dst):
     dis = "SENDING.."
     led.draw_text2(0, 0, dis, 1)
@@ -97,26 +109,23 @@ while True:
     d_scrol= GPIO.input(5)
     enter = GPIO.input(24)
     back = GPIO.input(21)
+    d='d' 
+    u='u'
     if scrol == False:
+        nu = menu_pos(nu,d,siz2)
         led.clear_display()
         led.draw_text2(0, 0, titl, 1)
         led.draw_text2(0, 15, files[nu], 1)
         led.display()
         time.sleep(0.2)
-        nu = nu + 1
-        if nu == siz1:
-            nu = 0
 
     elif d_scrol == False:
+        nu = menu_pos(nu,u,siz2)
         led.clear_display()
         led.draw_text2(0, 0, titl, 1)
         led.draw_text2(0, 15, files[nu], 1)
         led.display()
         time.sleep(0.2)
-        if nu == 0:
-            nu = siz2
-        else:
-            nu = nu - 1
 
     elif enter == False:
         src = nu
@@ -140,29 +149,25 @@ while True:
     d_scrol = GPIO.input(5)
     enter = GPIO.input(24)
     back = GPIO.input(21)
+    d='d'
+    u='u'
     if scrol == False:
+        un=menu_pos(un,d,siz2)
         led.clear_display()
         led.draw_text2(0, 0, title, 1)
         led.draw_text2(0, 15, files[un], 1)
         led.display()
         time.sleep(0.2)
-        un = un + 1
-        if un == siz1:
-            un = 0
 
     if d_scrol == False:
+        un=menu_pos(un,u,siz2)
         led.clear_display()
         led.draw_text2(0, 0, title, 1)
         led.draw_text2(0, 15, files[un], 1)
         led.display()
         time.sleep(0.2)
-        un = un - 1
-        if un == 0:
-            un = siz2
-        else:
-            un = un - 1
-
-    elif select == False:
+        
+    elif enter == False:
         des = un
         time.sleep(0.2)
         break
@@ -187,24 +192,21 @@ while True:
     d_scrol = GPIO.input(5)
     back = GPIO.input(21)
     select = GPIO.input(6)
+    d='d' 
+    u='u'
     if scrol == False:
+        x=menu_pos(x,d,siz_spath2)
         led.clear_display()
         led.draw_text2(0, 15, lst_spath[x], 1)
         led.display()
         time.sleep(0.2)
-        x = x + 1
-        if x == siz_spath:
-            x = 0
+  
     if d_scrol == False:
+        x=menu_pos(x,u,siz_spath2)
         led.clear_display()
         led.draw_text2(0, 15, lst_spath[x], 1)
         led.display()
         time.sleep(0.2)
-        if x == 0:
-            x = siz_spath2
-        else:
-            x = x -1
-
 
     elif enter == False:
         nsrc = "/media/pi/" + str((files[int(sinpt)])) + "/" + str((lst_spath[int(x - 1)]))
