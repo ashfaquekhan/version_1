@@ -99,10 +99,6 @@ while True:
         led.draw_text2(0, 15, files[nu], 1)
         led.display()
         time.sleep(0.2)
-        if nu == 0:
-            nu = siz2
-        else:
-            nu = nu - 1
 
     elif select == False:
         name = 'view_menu'
