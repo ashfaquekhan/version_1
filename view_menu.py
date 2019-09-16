@@ -48,6 +48,19 @@ led.draw_text2(0, 0, heading, 1)
 led.draw_text2(12, 15, note, 1)
 led.display()
 
+def menu_pos(pos,opr,lim):
+    x=pos
+    if opr =='d':
+        x=x+1
+    if x>lim and opr == 'd':
+        x=0
+    if opr == 'u':
+        x=x-1
+    if opr == 'u' and x<0:
+        x=lim
+    return x
+
+
 path = ('/media/pi')
 files = os.listdir(path)
 siz1 = len(files)
@@ -69,17 +82,18 @@ while True:
     select = GPIO.input(6)
     back = GPIO.input(21)
     enter = GPIO.input(24)
+    d='d'
+    u='u'
     if scrol == False:
+        nu = menu_pos(nu,d,siz2)
         led.clear_display()
         led.draw_text2(0, 0, titl, 1)
         led.draw_text2(0, 15, files[nu], 1)
         led.display()
         time.sleep(0.2)
-        nu = nu + 1
-        if nu == siz1:
-            nu = 0
 
     elif d_scrol == False:
+        nu = menu_pos(nu,u,siz2)
         led.clear_display()
         led.draw_text2(0, 0, titl, 1)
         led.draw_text2(0, 15, files[nu], 1)
