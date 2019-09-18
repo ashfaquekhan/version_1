@@ -105,7 +105,7 @@ while True:
         else:
             name="showlist"
             go_src=str(sys.argv[1])
-            def_src=str(sys.argv[2])
-            os.system("python pathfinder.py " + str(name) +" "+ str(go_src) +"/")
+            def_src="/"
+            os.system("python pathfinder.py " + str(name) +" "+ str(go_src) +" "+st(def_src))
 
 
