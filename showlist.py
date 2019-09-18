@@ -61,7 +61,7 @@ def menu_pos(pos,opr,lim):
         x=lim
     return x
 
-path = "/"+str(sys.argv[1])+"/"+str(sys.argv[2])
+path = str(sys.argv[1])+"/"+str(sys.argv[2])
 files = os.listdir(path)
 siz1 = len(files)
 siz2 = siz1 -1
@@ -100,12 +100,12 @@ while True:
         break
 
     elif back == False:
-        if str(sys.argv[1]) == '/media/pi' :
+        if str(sys.argv[1]) == "/media/pi" :
             os.system('python view_menu.py')
         else:
             name="showlist"
             go_src=str(sys.argv[1])
-            def_src="/"
-            os.system("python pathfinder.py " + str(name) +" "+ str(go_src) +" "+st(def_src))
+            def_src=str(sys.argv[2])
+            os.system("python pathfinder.py " + str(name) +" "+ str(go_src) +" "+ str(def_src))
 
 
