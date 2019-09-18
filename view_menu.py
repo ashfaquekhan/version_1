@@ -17,7 +17,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(5, GPIO.IN, pull_up_down=GPIO.PUD_UP) # DOWN_ARROW_BUTTON-gpio-29
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(21, GPIO.IN, pull_up_down=GPIO.PUD_UP) # BACK_BUTTON-gpio-13
+GPIO.setup(27, GPIO.IN, pull_up_down=GPIO.PUD_UP) # BACK_BUTTON-gpio-13
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(24, GPIO.IN, pull_up_down=GPIO.PUD_UP) # ENTER_BUTTON-gpio-18
@@ -80,7 +80,7 @@ while True:
     scrol = GPIO.input(17)
     d_scrol= GPIO.input(5)
     select = GPIO.input(6)
-    back = GPIO.input(21)
+    back = GPIO.input(27)
     enter = GPIO.input(24)
     d='d'
     u='u'
@@ -101,10 +101,10 @@ while True:
         time.sleep(0.2)
 
     elif select == False:
-        name = 'view_menu'
+        name = 'showlist'
         go_src = '/media/pi/'
         def_src = str(files[nu])
-        os.system("python pathfinder.py " + str(name)+" " + str(go_src) +" "+ str(def_src)+" "+ "0")
+        os.system("python pathfinder.py " + str(name)+" " + str(go_src) +" "+ str(def_src))
 
     elif back == False:
         os.system('python main_menu.py')
