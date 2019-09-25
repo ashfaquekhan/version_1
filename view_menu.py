@@ -77,11 +77,11 @@ if siz1 == 0:
     os.system('python main_menu.py')
 
 while True:
-    scrol = GPIO.input(17)
-    d_scrol= GPIO.input(5)
-    select = GPIO.input(6)
-    back = GPIO.input(27)
+    scrol = GPIO.input(21)
     enter = GPIO.input(24)
+    d_scrol = GPIO.input(5)
+    back = GPIO.input(22)
+    select = GPIO.input(6)
     d='d'
     u='u'
     if scrol == False:
@@ -102,7 +102,7 @@ while True:
 
     elif select == False:
         name = 'showlist'
-        go_src = '/media/pi/'
+        go_src = '/media/pi'
         def_src = str(files[nu])
         os.system("python pathfinder.py " + str(name)+" " + str(go_src) +" "+ str(def_src))
 
