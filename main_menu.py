@@ -11,7 +11,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(6, GPIO.IN, pull_up_down=GPIO.PUD_UP) # SELECT_BUTTON-PIN-31
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(21, GPIO.IN, pull_up_down=GPIO.PUD_UP) # UP_ARROW_BUTTON-PIN-13
+GPIO.setup(27, GPIO.IN, pull_up_down=GPIO.PUD_UP) # UP_ARROW_BUTTON-PIN-13
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(5, GPIO.IN, pull_up_down=GPIO.PUD_UP) # DOWN_ARROW_BUTTON-PIN-29
@@ -69,7 +69,7 @@ def main_menu():
     l=0
     while True:
         opt = ["TRANSFER","SAVE","FORMAT","VIEW"]
-        up = GPIO.input(21)
+        up = GPIO.input(27)
         down = GPIO.input(5)
         enter = GPIO.input(24)
         back = GPIO.input(22)
