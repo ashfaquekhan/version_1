@@ -9,20 +9,22 @@ import shutil
 
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(6, GPIO.IN, pull_up_down=GPIO.PUD_UP) # SELECT_BUTTON-gpio-31
+GPIO.setup(6, GPIO.IN, pull_up_down=GPIO.PUD_UP) # SELECT_BUTTON-PIN-31
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_UP) # UP_ARROW_BUTTON-gpio-11
+GPIO.setup(21, GPIO.IN, pull_up_down=GPIO.PUD_UP) # UP_ARROW_BUTTON-PIN-13
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(5, GPIO.IN, pull_up_down=GPIO.PUD_UP) # DOWN_ARROW_BUTTON-gpio-29
+GPIO.setup(5, GPIO.IN, pull_up_down=GPIO.PUD_UP) # DOWN_ARROW_BUTTON-PIN-29
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(27, GPIO.IN, pull_up_down=GPIO.PUD_UP) # BACK_BUTTON-gpio-13
+GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_UP) # BACK_BUTTON-PIN-15
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(24, GPIO.IN, pull_up_down=GPIO.PUD_UP) # ENTER_BUTTON-gpio-18
+GPIO.setup(24, GPIO.IN, pull_up_down=GPIO.PUD_UP) # ENTER_BUTTON-PIN-18
 
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_UP) # DELETE_BUTTON-PIN-16
 
 
 RESET_PIN = 15  # WiringPi pin 15 is GPIO14.
@@ -69,11 +71,11 @@ nu = 0
 titl = "VIEW"
 
 while True:
-    scrol = GPIO.input(17)
-    d_scrol= GPIO.input(5)
-    select = GPIO.input(6)
-    back = GPIO.input(27)
+    scrol = GPIO.input(21)
     enter = GPIO.input(24)
+    d_scrol = GPIO.input(5)
+    back = GPIO.input(22)
+    select = GPIO.input(6)
     d='d'
     u='u'
     if scrol == False:
