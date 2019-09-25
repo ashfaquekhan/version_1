@@ -8,19 +8,22 @@ import RPi.GPIO as  GPIO
 import shutil
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(6, GPIO.IN, pull_up_down=GPIO.PUD_UP) # SELECT_BUTTON-gpio-31
+GPIO.setup(6, GPIO.IN, pull_up_down=GPIO.PUD_UP) # SELECT_BUTTON-PIN-31
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_UP) # UP_ARROW_BUTTON-gpio-11
+GPIO.setup(21, GPIO.IN, pull_up_down=GPIO.PUD_UP) # UP_ARROW_BUTTON-PIN-13
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(5, GPIO.IN, pull_up_down=GPIO.PUD_UP) # DOWN_ARROW_BUTTON-gpio-29
+GPIO.setup(5, GPIO.IN, pull_up_down=GPIO.PUD_UP) # DOWN_ARROW_BUTTON-PIN-29
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(21, GPIO.IN, pull_up_down=GPIO.PUD_UP) # BACK_BUTTON-gpio-13
+GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_UP) # BACK_BUTTON-PIN-15
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(24, GPIO.IN, pull_up_down=GPIO.PUD_UP) # ENTER_BUTTON-gpio-18
+GPIO.setup(24, GPIO.IN, pull_up_down=GPIO.PUD_UP) # ENTER_BUTTON-PIN-18
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_UP) # DELETE_BUTTON-PIN-16
 
 RESET_PIN = 15  # WiringPi pin 15 is GPIO14.
 DC_PIN = 16  # WiringPi pin 16 is GPIO15.
@@ -105,11 +108,12 @@ if siz1 == 1:
     os.system('python main_menu.py')
 
 while True:
-    scrol = GPIO.input(17)
-    d_scrol= GPIO.input(5)
+    scrol = GPIO.input(21)
     enter = GPIO.input(24)
-    back = GPIO.input(21)
-    d='d' 
+    d_scrol = GPIO.input(5)
+    back = GPIO.input(22)
+    select = GPIO.input(6)
+    d='d'
     u='u'
     if scrol == False:
         nu = menu_pos(nu,d,siz2)
@@ -145,10 +149,11 @@ un = 0
 title = "SELECT SENDER"
 #led.draw_text2(0, 0, title, 1)
 while True:
-    scrol = GPIO.input(17)
-    d_scrol = GPIO.input(5)
+    scrol = GPIO.input(21)
     enter = GPIO.input(24)
-    back = GPIO.input(21)
+    d_scrol = GPIO.input(5)
+    back = GPIO.input(22)
+    select = GPIO.input(6)
     d='d'
     u='u'
     if scrol == False:
@@ -166,7 +171,7 @@ while True:
         led.draw_text2(0, 15, files[un], 1)
         led.display()
         time.sleep(0.2)
-        
+
     elif enter == False:
         des = un
         time.sleep(0.2)
@@ -187,12 +192,12 @@ siz_spath2 = siz_spath - 1
 x = 0
 
 while True:
-    scrol = GPIO.input(17)
+    scrol = GPIO.input(21)
     enter = GPIO.input(24)
     d_scrol = GPIO.input(5)
-    back = GPIO.input(21)
+    back = GPIO.input(22)
     select = GPIO.input(6)
-    d='d' 
+    d='d'
     u='u'
     if scrol == False:
         x=menu_pos(x,d,siz_spath2)
@@ -200,7 +205,7 @@ while True:
         led.draw_text2(0, 15, lst_spath[x], 1)
         led.display()
         time.sleep(0.2)
-  
+
     if d_scrol == False:
         x=menu_pos(x,u,siz_spath2)
         led.clear_display()
@@ -209,7 +214,7 @@ while True:
         time.sleep(0.2)
 
     elif enter == False:
-        nsrc = "/media/pi/" + str((files[int(sinpt)])) + "/" + str((lst_spath[int(x - 1)]))
+        nsrc = "/media/pi/" + str((files[int(sinpt)])) + "/" + str((lst_spath[int(x)]))
         ndes = "/media/pi/" + str((files[int(rinpt)]))
         dis1 = "SENT"
         copydir(nsrc, ndes)
