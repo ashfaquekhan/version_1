@@ -26,7 +26,6 @@ if __name__== '__main__':
     name = str(sys.argv[1])+".py"
     go_sr = str(sys.argv[2])
     def_sr = str(sys.argv[3])
-    back_log =
     os.system("python "+ str(name) +" "+ str(go_sr) +" "+ str(def_sr))
 
 elif back == False:
