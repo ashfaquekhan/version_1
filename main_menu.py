@@ -24,8 +24,6 @@ GPIO.setup(24, GPIO.IN, pull_up_down=GPIO.PUD_UP) # ENTER_BUTTON-PIN-18
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(23, GPIO.IN, pull_up_down=GPIO.PUD_UP) # DELETE_BUTTON-PIN-16
-
-
 RESET_PIN = 15  # WiringPi pin 15 is GPIO14.
 DC_PIN = 16  # WiringPi pin 16 is GPIO15.
 
@@ -37,6 +35,7 @@ spi = gaugette.spi.SPI(spi_bus, spi_device)
 # Very important... This lets py-gaugette 'know' what pins to use in order to reset the display
 led = gaugette.ssd1306.SSD1306(gpio, spi, reset_pin=RESET_PIN, dc_pin=DC_PIN, rows=32,
                                cols=128)  # Change rows & cols values depending on your display dimensions.
+
 led.begin()
 led.clear_display()
 led.display()
@@ -77,6 +76,7 @@ def main_menu():
         len_opt = len(opt)
         len_opt_t = len_opt - 1
 
+
         if down == False:
             d='d'
             l=menu_pos(l,d,len_opt_t)
@@ -105,5 +105,7 @@ def main_menu():
 
 while True:
     main_menu()
+
+
 
 
