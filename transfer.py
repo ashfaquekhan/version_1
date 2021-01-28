@@ -183,7 +183,6 @@ while True:
 led.clear_display()
 rinpt = des
 sinpt = src
-
 spath_name = "/media/pi/" + str((files[int(sinpt)]))
 spath = (spath_name)
 lst_spath = os.listdir(spath)
@@ -221,6 +220,6 @@ while True:
         led.draw_text2(0, 24, dis1, 1)
         led.display()
         time.sleep(0.2)
-
+        
     elif back == False:
         os.system('python main_menu.py')
