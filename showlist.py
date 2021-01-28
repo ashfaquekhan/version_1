@@ -94,7 +94,7 @@ while True:
         led.display()
         time.sleep(0.2)
 
-    elif select == False:
+    elif enter == False:
         name = "showlist"
         go_src = path
         def_src = str(files[nu])
